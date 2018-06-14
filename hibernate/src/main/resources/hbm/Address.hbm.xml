@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lv.pojo">
+
+    <!--一个类配置一个class-->
+    <class name="Address" table="address">
+
+        <!--id列-->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+
+        <!--其他属性列-->
+        <property name="addressname" column="addressname"/>
+        <property name="tel" column="tel"/>
+
+        <!--多对一配置,package + ClassName-->
+        <!--column : 外键名称-->
+        <!--不需要在实体类中配置userid,数据库中有字段就行，直接配置1对多的类就行-->
+        <!--lazy 关闭延迟加载，也会产生n+1 问题，会自动把关联关系查出来-->
+        <!--fetch: 使用链接查询加载，不使用这个会查n 次，使用链接查询性能会比较好一些-->
+        <many-to-one name="user" class="User" column="userid" fetch="join"/>
+
+    </class>
+
+</hibernate-mapping>

@@ -41,6 +41,8 @@
         <mapping class="com.lv.pojo.Account"/>
 
         <mapping resource="hbm/Account.hbm.xml"/>
+        <mapping resource="hbm/User.hbm.xml"/>
+        <mapping resource="hbm/Address.hbm.xml"/>
 
 
     </session-factory>
