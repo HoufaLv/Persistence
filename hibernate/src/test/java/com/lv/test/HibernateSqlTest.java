@@ -50,16 +50,20 @@ public class HibernateSqlTest {
         }
     }
 
+    /**
+     * 使用原生sql 查询，如果返回的结果集可以封装到pojo中，可以使用 session.createSQLQuery(sql).addEntity(Account.class); 来封装
+     */
     @Test
     public void testSqlQueryToEntity() {
         String sql = "select id,username,address from account";
 
-        List list = session.createSQLQuery(sql).list();
+        SQLQuery sqlQuery = session.createSQLQuery(sql).addEntity(Account.class);
+        List<Account> accountList = sqlQuery.list();
 
-        for (Object o : list) {
-            Object[] objects = (Object[]) o;
-            System.out.println("data: ->" + objects[0] + objects[1] + objects[2]);
+        for (Account account : accountList) {
+            System.out.println(account);
         }
     }
+
 
 }
