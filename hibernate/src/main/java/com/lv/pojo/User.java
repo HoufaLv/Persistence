@@ -1,12 +1,20 @@
 package com.lv.pojo;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+@Entity
+@Table(name = "user")
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String username;
+
+    @OneToMany(mappedBy = "user")
     private Set<Address> addressSet;
 
 

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.lv.pojo.Order" table="order" schema="hibernate">
+
+        <!--缓存策略,可读可写的缓存-->
+        <cache usage="read-write"/>
+
+        <id name="id" column="id">
+            <generator class="uuid"></generator>
+        </id>
+        <!--乐观锁字段-->
+        <!--<version name="version" column="version"/>-->
+
+        <property name="name" column="name"/>
+    </class>
+</hibernate-mapping>

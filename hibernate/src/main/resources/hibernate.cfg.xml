@@ -31,21 +31,26 @@
         <property name="current_session_context_class">thread</property>
 
         <!--开启二级缓存-->
-        <!--<property name="cache.use_second_level_cache">true</property>-->
+        <!--二级缓存，不再一个Session 中也可以使用，缓存溢出问题,查找顺序，先去一级缓存中查找，再去二级缓存中查找，只要是同一个SessionFactory 产生的Session都可以共享缓存-->
+        <property name="cache.use_second_level_cache">true</property>
         <!--选择二级缓存的实现类-->
-        <!--<property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>-->
+        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 
 
         <!--注册hbm映射文件-->
+        <!--hibernate 注解的使用-->
         <mapping class="com.lv.pojo.Account"/>
-
-        <mapping resource="hbm/Account.hbm.xml"/>
-        <mapping resource="hbm/User.hbm.xml"/>
-        <mapping resource="hbm/Address.hbm.xml"/>
-        <mapping resource="hbm/Teacher.hbm.xml"/>
-        <mapping resource="hbm/Student.hbm.xml"/>
-        <mapping resource="hbm/Card.hbm.xml"/>
-        <mapping resource="hbm/Person.hbm.xml"/>
+        <mapping class="com.lv.pojo.Order"/>
+        <mapping class="com.lv.pojo.User"/>
+        <mapping class="com.lv.pojo.Address"/>
+        <!--<mapping resource="hbm/Account.hbm.xml"/>-->
+        <!--<mapping resource="hbm/User.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Address.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Teacher.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Student.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Card.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Person.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Order.hbm.xml"/>-->
     </session-factory>
 
 </hibernate-configuration>

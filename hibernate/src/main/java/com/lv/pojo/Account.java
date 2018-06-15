@@ -1,10 +1,16 @@
 package com.lv.pojo;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "account")
 public class Account implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)//相当于native
     private Integer id;
+    @Column(name = "username")
     private String username;
     private String address;
 

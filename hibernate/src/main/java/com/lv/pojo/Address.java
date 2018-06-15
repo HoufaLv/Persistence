@@ -1,12 +1,21 @@
 package com.lv.pojo;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "address")
 public class Address implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "addressname")
     private String addressname;
     private String tel;
+
+    @ManyToOne
+    @JoinColumn(name = "userid")
     private User user;
 
     @Override
