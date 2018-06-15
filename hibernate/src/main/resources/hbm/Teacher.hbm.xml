@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lv.pojo">
+
+    <!--一个类配置一个class-->
+    <class name="Teacher" table="teacher">
+
+        <!--id列-->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+
+        <!--其他属性列-->
+        <property name="name" column="name"/>
+
+        <!--
+            多对多关系映射
+            name ： set 集合属性的名称
+            table : 关系表的名称
+            inverse : 放弃关系维护
+        -->
+        <set name="students" table="teacher_student" inverse="true">
+            <!--column 自己在关系表中的外键名称-->
+            <key column="teacherid"></key>
+            <!--class： set 集合中的类型 column:该类型在关系表中的外键名称-->
+            <many-to-many class="com.lv.pojo.Student" column="studentid"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

@@ -15,6 +15,24 @@
 
         <!--其他属性列-->
         <property name="username" column="username"/>
+
+
+        <!--
+            在User中创建Set<Address>
+            一对多关系
+            column : 多的一端对应的表的外键
+            class ： set中的pojo类型
+            order-by : set 集合在查询时有序
+            fetch ： join 采用链接查询，避免N + 1 问题
+            inverse : 放弃关系维护
+            cascade : 级联删除
+        -->
+        <set name="addressSet" order-by="id desc" inverse="true" cascade="delete">
+            <key column="userid"/>
+            <one-to-many class="Address"/>
+        </set>
+
+
     </class>
 
 </hibernate-mapping>

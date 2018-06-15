@@ -10,7 +10,6 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
         <property name="connection.username">root</property>
         <property name="connection.password">rootroot</property>
-
         <!--方言-->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
@@ -43,7 +42,10 @@
         <mapping resource="hbm/Account.hbm.xml"/>
         <mapping resource="hbm/User.hbm.xml"/>
         <mapping resource="hbm/Address.hbm.xml"/>
-
-
+        <mapping resource="hbm/Teacher.hbm.xml"/>
+        <mapping resource="hbm/Student.hbm.xml"/>
+        <mapping resource="hbm/Card.hbm.xml"/>
+        <mapping resource="hbm/Person.hbm.xml"/>
     </session-factory>
+
 </hibernate-configuration>

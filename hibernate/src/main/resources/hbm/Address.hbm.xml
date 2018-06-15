@@ -22,7 +22,7 @@
         <!--不需要在实体类中配置userid,数据库中有字段就行，直接配置1对多的类就行-->
         <!--lazy 关闭延迟加载，也会产生n+1 问题，会自动把关联关系查出来-->
         <!--fetch: 使用链接查询加载，不使用这个会查n 次，使用链接查询性能会比较好一些-->
-        <many-to-one name="user" class="User" column="userid" fetch="join"/>
+        <many-to-one name="user" class="User" column="userid" fetch="join" cascade="delete"/>
 
     </class>
 

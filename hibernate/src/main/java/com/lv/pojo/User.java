@@ -1,18 +1,21 @@
 package com.lv.pojo;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class User implements Serializable {
 
     private Integer id;
     private String username;
+    private Set<Address> addressSet;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                '}';
+
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
     }
 
     public User() { }

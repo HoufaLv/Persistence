@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.lv.pojo.Card" table="card" schema="hibernate">
+        <!--
+            card 的主键不能是自动增长，但是要和persion 的id 保持一致
+            主键生成策略,property 参数的值为 当前对象关联主表的对象的属性名称
+        -->
+        <id name="id" column="id">
+            <generator class="foreign">
+                <param name="property">person</param>
+            </generator>
+        </id>
+
+        <property name="name" column="name"/>
+        <one-to-one name="person" class="com.lv.pojo.Person"/>
+    </class>
+</hibernate-mapping>

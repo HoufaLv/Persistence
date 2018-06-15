@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lv.pojo">
+
+    <!--一个类配置一个class-->
+    <class name="Student" table="student">
+
+        <!--id列-->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+
+        <!--其他属性列-->
+        <property name="name" column="name"/>
+        <!--
+            如果要对student 中的teacher set 排序，则需要在many to many 中配置排序
+            set 节点的orderBy  是关联关系的列
+        -->
+        <set name="teachers" table="teacher_student">
+            <key column="studentid"></key>
+            <many-to-many class="com.lv.pojo.Teacher" column="teacherid" order-by="id desc"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
