@@ -1,6 +1,7 @@
 package com.lv.controller;
 
 import com.lv.client.MovieServiceClient;
+import com.lv.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +16,11 @@ public class ShopController {
     @Autowired
     private RestTemplate restTemplate;
 
-
     @Autowired
     private MovieServiceClient movieServiceClient;
 
+    @Autowired
+    private MovieService movieService;
 
     //负载均衡客户端
 //    @Autowired
