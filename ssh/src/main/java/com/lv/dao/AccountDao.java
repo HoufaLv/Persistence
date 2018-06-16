@@ -4,6 +4,7 @@ import com.lv.pojo.Account;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -65,6 +66,18 @@ public class AccountDao {
      */
     public List<Account> listAccount(){
         Criteria criteria = getSession().createCriteria(Account.class);
+        return criteria.list();
+    }
+
+    /**
+     * 根据任意参数查询对应结果
+     * @param propertyName
+     * @param value
+     * @return
+     */
+    public List<Account> listByParam(String propertyName,Object value){
+        Criteria criteria = getSession().createCriteria(Account.class);
+        criteria.add(Restrictions.eq(propertyName,value));
         return criteria.list();
     }
 }
