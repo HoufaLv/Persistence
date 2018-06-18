@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Vue 框架的使用</h3>
+
+    <div id="app">
+        <small>显示data：</small> <br>
+        <h4>{{message}}</h4>
+
+        <small>判断 ： 根据变量是否为true 来判断条件是否要显示 </small> <br>
+        <h4 v-if="flag">falg 为 true，显示内容</h4>
+
+        <small >循环</small>
+        <h4 v-for="(item, index) in nameList" :key="index"><small>{{item}}</small></h4>
+
+        <small>事件</small>
+        <button v-on:click="onClidk">点击测试函数是否能被使用</button> <br>
+
+        <small>html 转义</small> 
+        <h5 v-html="productInformation"></h5> <br>
+
+        <small>v-bind 绑定id</small>
+        <button v-bind:id="id" v-on:click="bindClick">点击按钮 {{id}}</button>
+        <a v-bind:href="url">点击跳转百度</a> <br>
+
+        <small>回车键触发事件</small>
+        <input type="text" v-on:keyup.enter="enterKeyUpEvent">
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            // data 里面声明你在视图里面要用的变量
+            data:{
+                url:"http://www.hao123.com",
+                id:1,
+                message:"hello,Vue",
+                flag:false,
+                nameList:["jack","lucy","lili"],
+                productInformation:"<small style='color:blue'>这是一条商品信息，使用v-html 动态插入</small>",
+                
+            },
+            methods:{
+                onClidk:function(){
+                    alert("我被点击了. -_-");
+                    if(!this.flag){
+                        this.flag=true;
+                    }else{
+                        this.flag=false;
+                    }
+                },
+                bindClick:function(){
+                    alert(this.id);
+                },
+                enterKeyUpEvent:function(){
+                    alert("触发了回车事件");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
